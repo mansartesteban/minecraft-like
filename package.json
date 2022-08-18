@@ -1,0 +1,29 @@
+{
+  "name": "minecraft-like",
+  "version": "0.0.0",
+  "description": "A Minecraft like with Three JS library",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "minecraft",
+    "three",
+    "threejs",
+    "js",
+    "javascript",
+    "game",
+    "web",
+    "html",
+    "css",
+    "3D",
+    "webgl",
+    "web",
+    "minecraft-like",
+    "cage",
+    "à",
+    "miel"
+  ],
+  "author": "Esteban MANSART",
+  "license": "ISC"
+}
