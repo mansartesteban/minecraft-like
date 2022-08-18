@@ -4,7 +4,8 @@
   "description": "A Minecraft like with Three JS library",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": ".\\node_modules\\.bin\\webpack serve --live-reload",
+    "build": ".\\node_modules\\.bin\\webpack"
   },
   "keywords": [
     "minecraft",
@@ -28,5 +29,8 @@
   "license": "ISC",
   "dependencies": {
     "three": "^0.143.0"
+  },
+  "devDependencies": {
+    "webpack": "^5.74.0"
   }
 }
