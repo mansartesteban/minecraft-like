@@ -25,5 +25,8 @@
     "miel"
   ],
   "author": "Esteban MANSART",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "three": "^0.143.0"
+  }
 }
