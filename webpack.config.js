@@ -12,6 +12,9 @@ module.exports = {
             fs: false,
             path: false
         },
+        alias: {
+            "@": path.resolve("src")
+        }
     },
     devServer: {
         static: {
@@ -19,8 +22,8 @@ module.exports = {
         },
         compress: true,
         port: 9000,
-        // host: "0.0.0.0",
-        // allowedHosts: 'all',
+        host: "0.0.0.0",
+        allowedHosts: 'all',
     },
     module: {
         rules: [
