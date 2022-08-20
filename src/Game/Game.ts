@@ -1,8 +1,9 @@
 import SeedRandom from "seedrandom"
 
 import InputsDefinitions from "@/Gui/InputsDefinitions"
-import Menu from "@/Gui/Menu"
 import Gui from "@/Gui/Gui"
+import MainMenu from "@/Game/Menus/Main";
+import WorldCreationMenu from "@/Game/Menus/WorldCreation";
 
 class Game {
     constructor() {
@@ -10,40 +11,13 @@ class Game {
 
     startLauncher() {
 
-        let mainMenu = new Menu("main-menu")
-        mainMenu.addInput({
-            type: InputsDefinitions.TYPE.BUTTON,
-            label: "Nouveau monde"
-        }, () => {
-            let r = SeedRandom("I'm a seed !")()
-            console.log(r)
-        })
-
-        mainMenu.addInput({
-            type: InputsDefinitions.TYPE.BUTTON,
-            label: "Charger un monde"
-        })
-
-        mainMenu.addInput({
-            type: InputsDefinitions.TYPE.BUTTON,
-            label: "Multijoueurs"
-        })
-
-        mainMenu.addInput({
-            type: InputsDefinitions.TYPE.BUTTON,
-            label: "Options"
-        })
-
-        mainMenu.addInput({
-            type: InputsDefinitions.TYPE.BUTTON,
-            label: "Quitter"
-        })
-
+        let mainMenu = new MainMenu()
+        let worldCreationMenu = new WorldCreationMenu()
 
         let gui = new Gui(this)
-        gui.addMenu(mainMenu)
-
-        gui.show(mainMenu.name)
+            gui.addMenu(mainMenu)
+            gui.addMenu(worldCreationMenu)
+            gui.show(worldCreationMenu.name)
     }
 
     // createWorld() {

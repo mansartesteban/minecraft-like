@@ -9,6 +9,21 @@ class TextField extends Input {
 
         this.label = options.label || ""
     }
+
+    createDomElement(): HTMLElement {
+        let textField = document.createElement("input")
+        textField.type = "text"
+        textField.classList.add("gui-text-field")
+        textField.placeholder = this.label
+        textField.addEventListener("input", (event) => {
+            if (this.callback !== undefined) {
+                this.callback(textField.value)
+            }
+        })
+
+        return super.createDomElement(textField)
+    }
+
 }
 
 export default TextField

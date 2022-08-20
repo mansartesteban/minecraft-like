@@ -1,12 +1,12 @@
 import SeedRandom from "seedrandom";
 import InputsDefinitions from "@/Gui/InputsDefinitions";
-import Menu from "@/Gui/Menu";
+import GuiMenu from "@/Gui/Menu";
 import Gui from "@/Gui/Gui";
 class Game {
     constructor() {
     }
     startLauncher() {
-        let mainMenu = new Menu("main-menu");
+        let mainMenu = new GuiMenu("main-menu");
         mainMenu.addInput({
             type: InputsDefinitions.TYPE.BUTTON,
             label: "Nouveau monde"

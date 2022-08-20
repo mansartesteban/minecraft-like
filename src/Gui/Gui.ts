@@ -1,11 +1,11 @@
-import Menu from "@/Gui/Menu";
+import GuiMenu from "@/Gui/GuiMenu";
 import Game from "@/Game/Game";
 
 class Gui {
 
     game: Game
-    menus: Menu[]
-    navigation: Menu[]
+    menus: GuiMenu[]
+    navigation: GuiMenu[] // Todo : passer en number avec seulement un pointer sur l'index de menus
     gameOverlay: HTMLElement | null
 
     constructor(game: Game) {
@@ -59,13 +59,22 @@ class Gui {
 
     hide() {
         if (this.gameOverlay) {
-            this.gameOverlay.style.display = "none"
+            this.gameOverlay.classList.remove("visible")
         }
     }
 
-    addMenu(menu: Menu) {
+    addMenu(menu: GuiMenu) {
         if (menu === null)
             return
+
+        menu.navigation.$on((action: string, menuName: string) => {
+            if (action === "next") {
+                this.next(menuName)
+            } else if (action === "back") {
+                this.back()
+            }
+
+        })
 
         this.menus.push(menu)
     }

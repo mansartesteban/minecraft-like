@@ -138,6 +138,13 @@ $backgroundColor: rgba($backgroundColor, .66);
 
       }
 
+      &.gui-text-field {
+        background: $backgroundColor;
+        border: 4px rgba($primaryColor, .5) ridge;
+        padding: .15em 1em;
+        text-align: center;
+      }
+
       &.gui-keyboard-binding {
 
         display: flex;
