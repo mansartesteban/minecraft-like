@@ -1,0 +1,15 @@
+$key-shadow-umbra-colour: rgba(black, .14);
+$key-shadow-penumbra-colour: rgba(black, .12);
+$ambient-shadow-colour: rgba(black, .20);
+
+@mixin elevation ($elevation) {
+  box-shadow: map-get($key-shadow-umbra-map, $elevation),
+  map-get($key-shadow-penumbra-map, $elevation),
+  map-get($ambient-shadow-map, $elevation);
+}
+
+@for $elevation from 1 through 24 {
+  .elevation-#{$elevation} {
+    @include elevation($elevation);
+  }
+}

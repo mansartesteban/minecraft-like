@@ -1,8 +1,10 @@
 const path = require("path")
+const ForkTsCheckerWebpackPlugin = require( 'fork-ts-checker-webpack-plugin' );
 
 module.exports = {
     mode: "development",
-    entry: "./src/index.js",
+    entry: "./dist-ts/index.js",
+    devtool: "source-map",
     output: {
         filename: "bundle.js",
         path: path.resolve(__dirname, "dist"),
@@ -14,12 +16,14 @@ module.exports = {
         },
         alias: {
             "@": path.resolve("src")
-        }
+        },
+        extensions: ['.tsx', '.ts', '.js'],
     },
     devServer: {
         static: {
             directory: path.join(__dirname, 'dist'),
         },
+
         compress: true,
         port: 9000,
         host: "0.0.0.0",
@@ -38,7 +42,6 @@ module.exports = {
                     "sass-loader",
                 ],
             },
-
             {
                 test: /\.css$/i,
                 use: [
@@ -48,6 +51,14 @@ module.exports = {
                     "css-loader",
                 ],
             },
+            {
+                test: /\.tsx?$/,
+                use: 'ts-loader',
+                exclude: /node_modules/,
+            },
         ],
-    }
+    },
+    plugins: [
+        new ForkTsCheckerWebpackPlugin(), // run TSC on a separate thread
+    ]
 }
