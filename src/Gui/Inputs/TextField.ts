@@ -11,9 +11,12 @@ class TextField extends Input {
     }
 
     createDomElement(): HTMLElement {
+
         let textField = document.createElement("input")
+
         textField.type = "text"
         textField.classList.add("gui-text-field")
+        textField.setAttribute("spellcheck", "false")
         textField.placeholder = this.label
         textField.addEventListener("input", (event) => {
             if (this.callback !== undefined) {

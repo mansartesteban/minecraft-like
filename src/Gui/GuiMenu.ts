@@ -1,27 +1,33 @@
 import Input from "./Input"
 import InputsDefinitions from "./InputsDefinitions"
-import {_Menu} from "@/@types/menus";
-import Navigation from "@/Gui/Navigation";
+import {_Menu} from "@/@types/menus"
+import GuiNavigationObserver from "@/Observers/GuiNavigationObserver"
+import { v4 as uuid } from "uuid"
+import SceneObserver from "@/Observers/SceneObserver";
 
-class GuiMenu implements _Menu {
+class GuiMenu implements _Menu, _NavigatorItem {
 
     name: string
+    uuid: string
     title: string | undefined
     inputs: Input[]
-    navigation: Navigation
+    navigationObserver: GuiNavigationObserver
+    sceneObserver: SceneObserver
+    backButtonCreated: boolean = false
+    guiDatas: _GuiDatas
 
     constructor(name: string = "", title?: string) {
+        this.uuid = uuid()
+
         this.name = name
 
         if (title)
             this.title = title
 
         this.inputs = []
-        this.navigation = new Navigation()
-    }
-
-    getName() {
-        return this.name
+        this.navigationObserver = new GuiNavigationObserver()
+        this.sceneObserver = new SceneObserver()
+        this.guiDatas = {}
     }
 
     addInput(options: _Options, callback?: (value: any) => void): this {
@@ -32,6 +38,10 @@ class GuiMenu implements _Menu {
         let dynamicInput = new dynamicClass(options, callback)
         this.inputs.push(dynamicInput)
         return this
+    }
+
+    collectDatas(): _GuiDatas {
+        return this.guiDatas
     }
 
     createDomElement() {
@@ -49,19 +59,20 @@ class GuiMenu implements _Menu {
         menu.appendChild(header)
         menu.appendChild(body)
 
-        this.addInput({
-            type: InputsDefinitions.TYPE.BUTTON,
-            label: "Retour",
-            bottom: true
-        }, () => {
-            this.navigation.$emit("back")
-        })
+        if (!this.backButtonCreated) {
+            this.addInput({
+                type: InputsDefinitions.TYPE.BUTTON,
+                label: "Retour",
+                bottom: true
+            }, () => {
+                this.navigationObserver.$emit(GuiNavigationObserver.events.PREV)
+            })
+            this.backButtonCreated = true
+        }
 
         this.inputs.forEach(input => {
             body.appendChild(input.createDomElement())
         })
-
-
 
         return menu
     }

@@ -1,39 +1,72 @@
 import GuiMenu from "@/Gui/GuiMenu";
 import Game from "@/Game/Game";
+import ListNavigation from "@/Utils/ListNavigation";
+import GuiNavigationObserver from "@/Observers/GuiNavigationObserver";
 
-class Gui {
+class Gui implements _Navigable {
 
     game: Game
-    menus: GuiMenu[]
-    navigation: GuiMenu[] // Todo : passer en number avec seulement un pointer sur l'index de menus
+    navigator: ListNavigation
     gameOverlay: HTMLElement | null
 
     constructor(game: Game) {
         this.game = game
-
-        this.menus = []
-
-        this.navigation = []
-
-        let domElement = document.getElementById("game-overlay")
-        this.gameOverlay = domElement
+        this.navigator = new ListNavigation()
+        this.gameOverlay = document.getElementById("game-overlay")
     }
 
+    add(menu: GuiMenu): this {
+        if (menu === null)
+            return this
 
-    next(menu: string) {
-        this.show(menu)
+        this.navigator.addItem(menu)
+
+        menu.navigationObserver.$on(GuiNavigationObserver.events.NEXT, (menuName: string) => {
+            this.to(menuName)
+        })
+        menu.navigationObserver.$on(GuiNavigationObserver.events.PREV, () => {
+            this.prev()
+        })
+
+        return this
     }
 
-    // Implémenters un count : .back(3) pour revenir 3 fois en arrière
-    back() {
-        this.navigation.pop()
-        let lastMenu = this.navigation.pop()
-
-        if (lastMenu)
-            this.show(lastMenu.getName())
+    remove(menu: GuiMenu): this {
+        this.navigator.removeItem(menu)
+        return this
     }
 
-    show(menu: string) {
+    next(menu: GuiMenu): this {
+        this.navigator.next(menu)
+        this.show()
+        return this
+    }
+
+    to(menuName: string): this {
+        this.navigator.to(menuName)
+        this.show()
+        return this
+    }
+
+    prev(count: number = 1): this {
+        this.navigator.prev(count)
+        this.show()
+        return this
+    }
+
+    findByName(name: string): _NavigatorItem | undefined {
+        return this.navigator.findByName(name)
+    }
+
+    leave() {
+        this.gameOverlay?.replaceChildren()
+        this.hide()
+    }
+
+    show() {
+
+        let menu = this.navigator.getCurrent() as GuiMenu
+
         if (this.gameOverlay) {
             this.gameOverlay.classList.add("visible")
             // this.game.controls.unlock(ControlsManager.TAB)
@@ -47,12 +80,7 @@ class Gui {
                     }
                 }
 
-                let menuFound = this.menus.find(m => m.getName() === menu)
-
-                if (menuFound) {
-                    this.gameOverlay.appendChild(menuFound.createDomElement())
-                    this.navigation.push(menuFound)
-                }
+                this.gameOverlay.appendChild(menu.createDomElement())
             }
         }
     }
@@ -63,20 +91,13 @@ class Gui {
         }
     }
 
-    addMenu(menu: GuiMenu) {
-        if (menu === null)
-            return
 
-        menu.navigation.$on((action: string, menuName: string) => {
-            if (action === "next") {
-                this.next(menuName)
-            } else if (action === "back") {
-                this.back()
-            }
-
-        })
-
-        this.menus.push(menu)
+    collectDatas(menu: GuiMenu): _GuiDatas|null {
+        let menuFound = this.navigator.findByName(menu.name) as GuiMenu
+        if (menuFound) {
+            return menuFound.collectDatas()
+        }
+        return null
     }
 
 }

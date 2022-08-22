@@ -30,10 +30,13 @@
   "license": "ISC",
   "dependencies": {
     "seedrandom": "^3.0.5",
-    "three": "^0.143.0"
+    "three": "^0.143.0",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@types/seedrandom": "^3.0.2",
+    "@types/three": "^0.143.1",
+    "@types/uuid": "^8.3.4",
     "css-loader": "^6.7.1",
     "fork-ts-checker-webpack-plugin": "^7.2.13",
     "node-sass": "^7.0.1",

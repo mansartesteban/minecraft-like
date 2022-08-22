@@ -9,3 +9,9 @@ import Game from "@/Game/Game"
 const game = new Game()
     game.startLauncher()
 
+
+
+/*
+    Todo :
+        - Ajouter une class 'Actor' (personnage, véhicule, objet ...)
+ */

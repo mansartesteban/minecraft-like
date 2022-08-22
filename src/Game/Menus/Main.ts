@@ -1,6 +1,7 @@
 import GuiMenu from "@/Gui/GuiMenu"
 import InputsDefinitions from "@/Gui/InputsDefinitions"
 import SeedRandom from "seedrandom"
+import GuiNavigationObserver from "@/Observers/GuiNavigationObserver";
 
 class Main extends GuiMenu {
 
@@ -15,9 +16,7 @@ class Main extends GuiMenu {
             type: InputsDefinitions.TYPE.BUTTON,
             label: "Nouveau monde"
         }, () => {
-            this.navigation.$emit("next", "world-creation")
-            let r = SeedRandom("I'm a seed !")()
-            console.log(r)
+            this.navigationObserver.$emit(GuiNavigationObserver.events.NEXT, "world-creation")
         })
 
         this.addInput({
