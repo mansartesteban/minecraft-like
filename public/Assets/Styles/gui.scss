@@ -40,7 +40,7 @@ $backgroundColor: rgba($backgroundColor, .66);
     top: -5%; bottom: -5%;
     left: -5%; right: -5%;
     z-index: -1;
-    background: url("@/Assets/Images/main-background.jpg");
+    background: url("../Images/main-background.jpg");
     background-size: cover;
     filter: blur(8px);
   }
@@ -53,7 +53,7 @@ $backgroundColor: rgba($backgroundColor, .66);
     top: 5%;
     width: 420px;
     margin: auto;
-    color: white;
+    color: red;
     font-size: 64px;
     //overflow: hidden;
     letter-spacing: 10px;

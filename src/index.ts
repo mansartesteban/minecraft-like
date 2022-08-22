@@ -1,7 +1,7 @@
-import "@/Assets/Styles/reset.scss"
-import "@/Assets/Styles/fonts.scss"
-import "@/Assets/Styles/minecraft.scss"
-import "@/Assets/Styles/gui.scss"
+import "@assets/Styles/reset.scss"
+import "@assets/Styles/fonts.scss"
+import "@assets/Styles/minecraft.scss"
+import "@assets/Styles/gui.scss"
 
 // @ts-ignore
 import Game from "@/Game/Game"
