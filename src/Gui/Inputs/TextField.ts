@@ -1,3 +1,4 @@
+import { _Options } from "@/@types";
 import Input from "@/Gui/Input";
 
 class TextField extends Input {

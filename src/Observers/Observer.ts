@@ -1,3 +1,5 @@
+import { _LocalObserver, _Observer } from "@/@types"
+
 class Observer implements _Observer {
 
     observers: _LocalObserver[]

@@ -1,3 +1,5 @@
+import { _Options } from "@/@types"
+
 class Input {
 
     options: _Options

@@ -1,33 +1,17 @@
 {
   "name": "minecraft-like",
-  "version": "0.0.0",
+  "author": "Esteban MANSART",
   "description": "A Minecraft like with Three JS library",
+  "version": "0.0.0",
+  "license": "ISC",
   "main": "index.ts",
   "scripts": {
-    "start": ".\\node_modules\\.bin\\webpack serve --live-reload",
+    "start": "./node_modules/.bin/npm-run-all --parallel ts serve",
+    "serve": ".\\node_modules\\.bin\\webpack serve --live-reload",
+    "ts": "npx tsc",
     "build": ".\\node_modules\\.bin\\webpack"
   },
-  "typings": [
-    "./src/@types/index.d.ts"
-  ],
-  "keywords": [
-    "minecraft",
-    "three",
-    "threejs",
-    "js",
-    "javascript",
-    "game",
-    "web",
-    "html",
-    "css",
-    "3D",
-    "webgl",
-    "web",
-    "minecraft-like",
-    "cage à miel"
-  ],
-  "author": "Esteban MANSART",
-  "license": "ISC",
+  "typings": "./src/@types/index.d.ts",
   "dependencies": {
     "seedrandom": "^3.0.5",
     "three": "^0.143.0",
@@ -49,5 +33,21 @@
     "webpack": "^5.74.0",
     "webpack-cli": "^4.10.0",
     "webpack-dev-server": "^4.10.0"
-  }
+  },
+  "keywords": [
+    "minecraft",
+    "three",
+    "threejs",
+    "js",
+    "javascript",
+    "game",
+    "web",
+    "html",
+    "css",
+    "3D",
+    "webgl",
+    "web",
+    "minecraft-like",
+    "cage à miel"
+  ]
 }

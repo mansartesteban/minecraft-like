@@ -1,0 +1,12 @@
+{
+  "texture": {
+    "path": "/Assets/Textures/Blocs/grass.top.png",
+    "textureMapping": {
+      "top": [0, 2],
+      "bottom": [0, 0],
+      "side": [0, 1]
+    }
+  },
+  "type": "solid",
+  "hardness": 1
+}

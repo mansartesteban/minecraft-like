@@ -1,3 +1,4 @@
+import {_NavigatorItem, _NavigatorList } from "@/@types"
 
 class ListNavigation implements _NavigatorList {
 

@@ -1,3 +1,4 @@
+import { _Options } from "@/@types";
 import Input from "../Input";
 
 class KeyboardBinding extends Input {

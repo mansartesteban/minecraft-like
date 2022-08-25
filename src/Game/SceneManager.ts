@@ -2,12 +2,16 @@ import Scene from "@/Game/Scene"
 import ListNavigation from "@/Utils/ListNavigation"
 import GuiMenu from "@/Gui/GuiMenu";
 import seedrandom from "seedrandom";
+import Game from "@/Game/Game";
+import { _Navigable } from "@/@types";
 
 class SceneManager implements _Navigable {
 
     navigator: ListNavigation
+    game: Game
 
-    constructor() {
+    constructor(game: Game) {
+        this.game = game
         this.navigator = new ListNavigation()
 
         this.init()

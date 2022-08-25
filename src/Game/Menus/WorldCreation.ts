@@ -1,3 +1,4 @@
+import { _WorldOptions } from "@/@types"
 import GuiMenu from "@/Gui/GuiMenu"
 import InputsDefinitions from "@/Gui/InputsDefinitions"
 import SceneObserver from "@/Observers/SceneObserver"

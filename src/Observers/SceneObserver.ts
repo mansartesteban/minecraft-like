@@ -1,4 +1,4 @@
-import Observer from "@/Observers/Observer";
+import Observer from "@/Observers/Observer"
 
 class SceneObserver extends Observer {
 

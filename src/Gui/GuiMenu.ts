@@ -4,6 +4,7 @@ import {_Menu} from "@/@types/menus"
 import GuiNavigationObserver from "@/Observers/GuiNavigationObserver"
 import { v4 as uuid } from "uuid"
 import SceneObserver from "@/Observers/SceneObserver";
+import {_GuiDatas, _NavigatorItem, _Options } from "@/@types"
 
 class GuiMenu implements _Menu, _NavigatorItem {
 

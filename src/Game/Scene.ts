@@ -1,13 +1,14 @@
 import { v4 as uuid } from "uuid"
 import World from "@/Game/World"
 import Stats from 'three/examples/jsm/libs/stats.module'
+import { _NavigatorItem } from "@/@types"
 
 
-class Scene implements _NavigatorItem {
+class Scene implements _NavigatorItem    {
 
     uuid: string
     name: string
-    stats: Function
+    stats: Stats
 
     constructor(name: string = "") {
         this.uuid = uuid()
@@ -28,8 +29,6 @@ class Scene implements _NavigatorItem {
     }
 
     update() {
-        console.log("update ?")
-        // @ts-ignore
         this.stats.update()
     }
 

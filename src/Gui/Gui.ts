@@ -2,6 +2,7 @@ import GuiMenu from "@/Gui/GuiMenu";
 import Game from "@/Game/Game";
 import ListNavigation from "@/Utils/ListNavigation";
 import GuiNavigationObserver from "@/Observers/GuiNavigationObserver";
+import {_GuiDatas, _Navigable, _NavigatorItem } from "@/@types";
 
 class Gui implements _Navigable {
 
